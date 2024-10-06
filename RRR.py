@@ -6,6 +6,7 @@ TITLE="R.R.R"
 levels=7
 level=1
 trash=["bottle","chips","plastic bag","battery"]
+cats=[]
 actors=[]
 def draw():
     screen.blit("rbg", (0, 0))
@@ -24,6 +25,16 @@ def make_actors():
     for image in images:
         actor=Actor(image)
         actors.append(actor)
-        
+    #positioning the actor
+    number_gappes=level+2
+    size=WIDTH/number_gappes
+    number=1
+    for actor in actors:
+        actor.pos=(size*number,50)
+        number=number+1
+    #animation
+    for actor in actors:
+        actor.anchor=("center","bottom")
+        dance=animate(actor,duration=5,y=HEIGHT)
 make_actors()
 pgzrun.go()
